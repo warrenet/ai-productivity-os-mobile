@@ -14,11 +14,11 @@
     <section class="panel"><h2>Activity Feed</h2><ul id="feed"></ul></section>
     <section class="panel"><h2>Optimization Metrics</h2><div id="metrics"></div></section>
     <section class="panel"><h2>Controls</h2>
-      <button onclick="pauseAll()">Pause All</button>
-      <button onclick="resumeAll()">Resume All</button>
-      <button onclick="trigger()">Trigger Workflow</button>
+      <button data-action="pause">Pause All</button>
+      <button data-action="resume">Resume All</button>
+      <button data-action="trigger">Trigger Workflow</button>
     </section>
   </main>
-  <script src="dashboard.js"></script>
+  <script src="dashboard.js" defer></script>
 </body>
 </html>
