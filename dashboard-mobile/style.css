@@ -1,0 +1,10 @@
+body { font-family: system-ui, Arial, sans-serif; margin:0; background:#f6f7f9; }
+header { background:#111827; color:#fff; padding:16px; text-align:center; }
+main { padding:12px; }
+.panel { background:#fff; margin:12px 0; padding:12px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,.06); }
+.grid { display:flex; gap:8px; flex-wrap:wrap; }
+.card { background:#eef2ff; padding:8px 10px; border-radius:8px; min-width:120px; }
+.log { font-family: ui-monospace, monospace; background:#f3f4f6; padding:8px; border-radius:8px; min-height:60px; }
+button { width:100%; padding:12px; margin:6px 0; background:#2563eb; color:#fff; border:none; border-radius:8px; font-size:16px; }
+button:active { transform: scale(0.99); }
+@media (min-width:640px){ button{ width:auto; margin-right:8px; } }

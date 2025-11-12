@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Productivity Command Center</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header><h1>AI Productivity Command Center</h1></header>
+  <main>
+    <section class="panel"><h2>Agent Status</h2><div id="status" class="grid"></div></section>
+    <section class="panel"><h2>Workflow Monitor</h2><div id="log" class="log"></div></section>
+    <section class="panel"><h2>Activity Feed</h2><ul id="feed"></ul></section>
+    <section class="panel"><h2>Optimization Metrics</h2><div id="metrics"></div></section>
+    <section class="panel"><h2>Controls</h2>
+      <button onclick="pauseAll()">Pause All</button>
+      <button onclick="resumeAll()">Resume All</button>
+      <button onclick="trigger()">Trigger Workflow</button>
+    </section>
+  </main>
+  <script src="dashboard.js"></script>
+</body>
+</html>

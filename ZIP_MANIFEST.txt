@@ -1,0 +1,36 @@
+ai-productivity-os-mobile/
+- orchestrator-agent/
+  - server.js
+  - .env.example
+  - Dockerfile
+  - README.md
+  - test/agent.test.js
+- prompt-enhancer-agent/
+  - server.js
+  - .env.example
+  - Dockerfile
+  - README.md
+  - test/enhancer.test.js
+- slack-monitor-agent/
+  - server.js
+  - .env.example
+  - Dockerfile
+  - README.md
+  - test/slack-listener.test.js
+- dashboard-mobile/
+  - index.html
+  - style.css
+  - dashboard.js
+- workflows/
+  - slack_prompt_deploy_workflow.json
+  - slack_prompt_deploy_workflow_schema.json
+- ci-cd/
+  - vercel-config.json
+  - railway-config.yaml
+- .github/workflows/
+  - deploy.yml
+- meta-enhancement-log/
+  - meta_enhancement_log_index.pdf
+- ops/
+  - daily_operations_checklist_mobile.pdf
+- README.md

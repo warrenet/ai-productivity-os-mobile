@@ -1,0 +1,6 @@
+{
+  "name": "slack_prompt_deploy",
+  "steps": ["slack-monitor", "prompt-enhancer", "orchestrator"],
+  "retry": { "count": 2, "delayMs": 1000 },
+  "fallback": "notify-ops"
+}
