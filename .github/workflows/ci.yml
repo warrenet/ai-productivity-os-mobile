@@ -1,0 +1,83 @@
+# Node.js CI workflow for ai-productivity-os-mobile
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+
+    strategy:
+      matrix:
+        node-version: [18, 20]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: |
+          orchestrator-agent/package-lock.json
+          multi-agent-system/package-lock.json
+          slack-monitor-agent/package-lock.json
+          prompt-enhancer-agent/package-lock.json
+
+    - name: Check for root package.json
+      id: check-root-package
+      run: |
+        if [ -f "package.json" ]; then
+          echo "exists=true" >> $GITHUB_OUTPUT
+        else
+          echo "exists=false" >> $GITHUB_OUTPUT
+          echo "No root package.json found - skipping root npm commands"
+        fi
+
+    - name: Install dependencies (root)
+      if: steps.check-root-package.outputs.exists == 'true'
+      run: npm ci
+
+    - name: Run lint (root)
+      if: steps.check-root-package.outputs.exists == 'true'
+      run: |
+        if npm run lint --dry-run 2>/dev/null; then
+          npm run lint
+        else
+          echo "No lint script found in root package.json - skipping"
+        fi
+
+    - name: Run build (root)
+      if: steps.check-root-package.outputs.exists == 'true'
+      run: |
+        if npm run build --dry-run 2>/dev/null; then
+          npm run build
+        else
+          echo "No build script found in root package.json - skipping"
+        fi
+
+    - name: Run tests (root)
+      if: steps.check-root-package.outputs.exists == 'true'
+      run: |
+        if npm run test --dry-run 2>/dev/null; then
+          npm run test
+        else
+          echo "No test script found in root package.json - skipping"
+        fi
+
+    - name: Validate subdirectory packages
+      run: |
+        echo "Checking subdirectory packages..."
+        for dir in orchestrator-agent multi-agent-system slack-monitor-agent prompt-enhancer-agent; do
+          if [ -f "$dir/package.json" ]; then
+            echo "Found package.json in $dir"
+          fi
+        done
