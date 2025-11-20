@@ -1,0 +1,12 @@
+# Code owners for ai-productivity-os-mobile repository
+# These owners will be requested for review when someone opens a pull request.
+
+# Default owner for everything in the repo
+*       @warrenet
+
+# Specific ownership patterns (can be customized as needed)
+/.github/       @warrenet
+/multi-agent-system/    @warrenet
+/orchestrator-agent/    @warrenet
+/slack-monitor-agent/   @warrenet
+/prompt-enhancer-agent/ @warrenet
